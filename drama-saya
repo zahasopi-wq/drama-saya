@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Penjana Drama Saya</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+        body { max-width: 600px; margin: 0 auto; padding: 20px; background: #f0f4f8; }
+        h1 { text-align: center; color: #2d3748; margin-bottom: 30px; }
+        .box { background: white; padding: 20px; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        label { display: block; font-weight: bold; margin-bottom: 8px; color: #1a202c; }
+        textarea { width: 100%; height: 100px; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; resize: vertical; }
+        button { width: 100%; padding: 14px; border: none; border-radius: 8px; font-size: 17px; font-weight: bold; cursor: pointer; }
+        .btn-primary { background: #2563eb; color: white; margin-bottom: 12px; }
+        .btn-primary:hover { background: #1d4ed8; }
+        .btn-dreamina { background: #10b981; color: white; }
+        .btn-dreamina:hover { background: #059669; }
+        #hasil { display: none; }
+        .info { font-size: 14px; color: #666; margin-top: 8px; }
+    </style>
+</head>
+<body>
+
+    <h1>🎬 Penjana Drama Saya</h1>
+
+    <div class="box">
+        <label>Tulis cerita dalam Bahasa Melayu:</label>
+        <textarea id="inputMelayu" placeholder="Contoh: Seorang gadis duduk di tepi tingkap, cahaya matahari masuk dengan lembut..."></textarea>
+    </div>
+
+    <div class="box">
+        <button class="btn-primary" onclick="janaTeks()">1️⃣ Tukar ke Bahasa Inggeris</button>
+        
+        <div id="hasil">
+            <label>Teks untuk disalin ke Dreamina:</label>
+            <textarea id="outputInggeris" readonly placeholder="Teks terjemahan akan muncul di sini..."></textarea>
+            <p class="info">💡 Salin teks di atas, tekan butang di bawah, kemudian tampal ke Dreamina</p>
+            
+            <button class="btn-dreamina" onclick="bukaDreamina()">2️⃣ Buka Dreamina →</button>
+        </div>
+    </div>
+
+    <script>
+        function janaTeks() {
+            const teks = document.getElementById('inputMelayu').value.trim();
+            if (!teks) { alert('Sila tulis cerita dahulu!'); return; }
+            
+            // Untuk sekarang: kita guna Google Translate secara manual
+            // Nanti boleh tambah terjemahan automatik bila dah sedia
+            document.getElementById('outputInggeris').value = 
+                "Salin teks Melayu di bawah ke Google Translate, tukar ke Inggeris:\n\n" 
+                + teks + 
+                "\n\nKemudian tampal hasil terjemahan ke Dreamina.";
+            document.getElementById('hasil').style.display = 'block';
+        }
+
+        function bukaDreamina() {
+            window.open('https://dreamina.capcut.com', '_blank');
+        }
+    </script>
+</body>
+</html>
